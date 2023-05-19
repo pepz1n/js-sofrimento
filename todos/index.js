@@ -38,10 +38,13 @@ function addLocalStorage() {
 
 function getLocalStorage () {
   itens = JSON.parse(localStorage.getItem('itens'));
+  if (!itens) {
+    localStorage.setItem('itens', []);
+  }
   adicionarItens();
 }
 
-function excluir(item) {
+function excluir(_) {
   const idExclusao = prompt('Informe o Id:');
   itens.splice(idExclusao, 1);
   adicionarItens();

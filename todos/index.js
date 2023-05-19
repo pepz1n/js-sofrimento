@@ -37,11 +37,12 @@ function addLocalStorage() {
 }
 
 function getLocalStorage () {
-  itens = JSON.parse(localStorage.getItem('itens'));
-  if (!itens) {
-    localStorage.setItem('itens', []);
+  try {
+    itens = JSON.parse(localStorage.getItem('itens'));
+    adicionarItens();
+  } catch (error) {
+    localStorage.setItem('itens', '[]');
   }
-  adicionarItens();
 }
 
 function excluir(_) {
